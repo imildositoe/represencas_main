@@ -1,18 +1,10 @@
 <template>
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
+        <nav id="sidebar" style="cursor: default;">
+            <div class="sidebar-header" onselectstart="return false">
                 <h5 style="margin-left: -30%">
-                    <img src="../assets/img/logo_icon.png" class="" alt="Logo">&nbsp; Represenças &nbsp;
-                    <!--                    <a href="javascript:void(0)" id="sidebarCollapse" class="">-->
-                    <!--                        <i class="fas fa-align-left"></i>-->
-                    <!--                    </a>-->
-                    <!--                    <a href="#" class="d-inline-block d-lg-none ml-auto"-->
-                    <!--                       data-toggle="collapse" data-target="#navbarSupportedContent"-->
-                    <!--                       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-                    <!--                        <i class="fas fa-align-justify"></i>-->
-                    <!--                    </a>-->
+                    <img src="../assets/img/represencas_logo_2.png" class="" alt="Logo" style="width: 35px;height: 35px;">&nbsp; Represenças &nbsp;
                 </h5>
             </div>
 
@@ -23,12 +15,12 @@
                         Início
                     </router-link>
                 </li>
-                <li id="cursos">
-                    <router-link to="/cursos">
-                        <i class="fas fa-briefcase"></i>
-                        Cursos
-                    </router-link>
-                </li>
+<!--                <li id="cursos">-->
+<!--                    <router-link to="/cursos">-->
+<!--                        <i class="fas fa-briefcase"></i>-->
+<!--                        Cursos-->
+<!--                    </router-link>-->
+<!--                </li>-->
                 <li id="turmas">
                     <router-link to="/turmas">
                         <i class="fas fa-pencil-ruler"></i>
@@ -182,7 +174,7 @@
     }
 
     #sidebar .sidebar-header {
-        padding: 20px;
+        padding: 6% 20px 5% 20px;
         background: #1c2732;
     }
 

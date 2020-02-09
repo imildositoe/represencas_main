@@ -7,6 +7,7 @@ import Arquivo from './components/pages/Arquivo.vue'
 import Estatisticas from './components/pages/Estatisticas.vue'
 import Estudantes from './components/pages/Estudantes.vue'
 import Marcacao from './components/pages/Marcacao.vue'
+import Login from './components/Login.vue'
 
 
 import CSSPage from './assets/docs/CSSPage.vue';
@@ -61,36 +62,39 @@ Vue.use(Router);
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [
-        {
-            path: '/',
-            name: 'Index',
-            component: IndexPage
-        }, {
-            path: '/cursos',
-            name: 'Cursos',
-            component: Cursos
-        }, {
-            path: '/turmas',
-            name: 'Turmas',
-            component: Turmas
-        }, {
-            path: '/estudantes',
-            name: 'Estudantes',
-            component: Estudantes
-        }, {
-            path: '/marcacao',
-            name: 'Marcacao',
-            component: Marcacao
-        }, {
-            path: '/estatisticas',
-            name: 'Estatisticas',
-            component: Estatisticas
-        }, {
-            path: '/arquivo',
-            name: 'Arquivo',
-            component: Arquivo
-        },
+    routes: [{
+        path: '/login',
+        name: 'Login',
+        component: Login
+    }, {
+        path: '/',
+        name: 'IndexPage',
+        component: IndexPage
+    }, {
+        path: '/cursos',
+        name: 'Cursos',
+        component: Cursos
+    }, {
+        path: '/turmas',
+        name: 'Turmas',
+        component: Turmas
+    }, {
+        path: '/estudantes',
+        name: 'Estudantes',
+        component: Estudantes
+    }, {
+        path: '/marcacao',
+        name: 'Marcacao',
+        component: Marcacao
+    }, {
+        path: '/estatisticas',
+        name: 'Estatisticas',
+        component: Estatisticas
+    }, {
+        path: '/arquivo',
+        name: 'Arquivo',
+        component: Arquivo
+    },
 
         // {
         //   path: '/about',

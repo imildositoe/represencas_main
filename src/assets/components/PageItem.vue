@@ -8,8 +8,9 @@
 </template>
 
 <script>
-import classNames from 'classnames';
-import waves from '../mixins/waves';
+// import classNames from 'classnames';
+// import waves from '../mixins/waves';
+// import waves from '@/assets/mdb/js/modules/waves';
 
 const PageItem = {
   props: {
@@ -48,7 +49,7 @@ const PageItem = {
       );
     }
   },
-  mixins: [waves]
+  mixins: [/*waves*/]
 };
 
 export default PageItem;

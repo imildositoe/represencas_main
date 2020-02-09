@@ -3,34 +3,34 @@
         <h3 class="text-left">Cursos Alocados Neste Semestre</h3>
 
         <div class="cards">
-            <card color="info-color" class="text-center col-lg-3 card">
+            <card v-for="c in cursos" color="info-color" class="text-center col-lg-3 card"
+                  @click.native="showModal16 = true">
                 <card-body>
-                    <h4>Informatica</h4>
-                    <h6>2º Ano</h6>
+                    <h4>{{ c.curso }}</h4>
+                    <h6>{{ c.nivel }}º Ano</h6>
                 </card-body>
             </card>
 
-            <card color="brown" class="text-center col-lg-3" id="card-add">
+            <card color="brown" class="text-center col-lg-3" id="card-add" @click.native="showModal16 = true">
                 <card-body>
-                    <h1><i class="fa fa-folder-plus"></i></h1>
+                    <h1><i class="fa fa-folder-plus"/></h1>
                 </card-body>
             </card>
         </div>
 
 
         <!--Modal-->
-        <btn color="primary" @click.native="showModal16 = true">Open modal</btn>
         <modal v-if="showModal16" @close="showModal16 = false">
             <modal-header>
-                <modal-title>New message</modal-title>
+                <modal-title>Disciplinas</modal-title>
             </modal-header>
             <modal-body>
-<!--                <md-input type="text" :label="mailAddress"/>-->
+                <!--                <md-input type="text" :label="mailAddress"/>-->
                 <md-textarea label="Message"/>
             </modal-body>
             <modal-footer>
-                <btn color="secondary" @click.native="showModal16 = false">Close</btn>
-                <btn color="primary">Send message</btn>
+                <btn color="secondary" @click.native="showModal16 = false">Fechar</btn>
+                <btn color="primary">Salvar</btn>
             </modal-footer>
         </modal>
 
@@ -39,13 +39,29 @@
 
 <script>
     import {Card, CardBody, Btn, Modal, ModalHeader, ModalBody, ModalFooter, ModalTitle, MdTextarea} from 'mdbvue';
+    import axios from "axios";
+
     export default {
         name: "FormCursos",
         components: {Card, CardBody, Btn, ModalTitle, ModalFooter, ModalBody, ModalHeader, Modal, MdTextarea},
         data() {
             return {
                 showModal16: false,
+                cursos: [],
             }
+        },
+        methods: {
+            getCursos() {
+                let mes = new Date().getMonth().valueOf() + 1, semestre = '';
+                semestre = (mes <= 6) ? 1 : 2;
+                axios.get('http://127.0.0.1:8000/api/get_cursos?semestre=' + semestre + '&id_docente=' + 1)
+                    .then(response => {
+                        this.cursos = response.data.cursos;
+                    });
+            }
+        },
+        beforeMount() {
+            this.getCursos();
         }
     }
 </script>
@@ -63,7 +79,7 @@
 
     #card-add {
         margin-left: 2%;
-        background-color: #ccc8ff!important;
+        background-color: #ccc8ff !important;
     }
 
     .card {
