@@ -59,15 +59,19 @@ import FooterPage from './assets/docs/FooterPage.vue';
 
 Vue.use(Router);
 
+
+
+// Vue.prototype.$base_url = 'http://192.168.43.228:8000/api/';
+
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [{
-        path: '/login',
+        path: '/',
         name: 'Login',
         component: Login
     }, {
-        path: '/',
+        path: '/home',
         name: 'IndexPage',
         component: IndexPage
     }, {
@@ -96,26 +100,13 @@ export default new Router({
         component: Arquivo
     },
 
-        // {
-        //   path: '/about',
-        //   name: 'about',
-        //   // route level code-splitting
-        //   // this generates a separate chunk (about.[hash].js) for this route
-        //   // which is lazy-loaded when the route is visited.
-        //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-        // }
-
-
         //TEMPLATE ROUTES
 
         {
             path: '/demo',
             name: 'Home',
             component: HomePage
-        },
-
-        // PAGES
-        {
+        }, {
             path: '/css',
             name: 'CSSPage',
             component: CSSPage
@@ -285,7 +276,7 @@ export default new Router({
         }, {
             path: '/components/footer',
             name: 'FooterPage',
-            component: FooterPage
+            component: FooterPage,
         }
     ]
 })

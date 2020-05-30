@@ -1,40 +1,45 @@
 <template>
     <container id="nav-container">
         <!--Navbar-->
-        <navbar id="fixed-nav" position="top" dark style="background-color: #ffffff;margin-left: 18.5%" class="col-lg-10" scrolling>
+        <navbar id="fixed-nav" position="top" dark style="background-color: #ffffff;margin-left: 18.5%"
+                class="col-lg-10" scrolling>
             <navbar-collapse>
                 <navbar-nav>
-<!--                    <navbar-item href="#" waves-fixed><span style="color: #688696;">Features</span></navbar-item>-->
-<!--                    &lt;!&ndash; Dropdown &ndash;&gt;-->
-<!--                    <dropdown tag="li" class="nav-item">-->
-<!--                        <dropdown-toggle slot="toggle" tag="a" navLink waves-fixed><span style="color: #688696;">Dropdown</span>-->
-<!--                        </dropdown-toggle>-->
-<!--                        <dropdown-menu>-->
-<!--                            <dropdown-item>Action</dropdown-item>-->
-<!--                            <dropdown-item>Another action</dropdown-item>-->
-<!--                            <dropdown-item>Something else here</dropdown-item>-->
-<!--                        </dropdown-menu>-->
-<!--                    </dropdown>-->
                     <i class="fa fa-align-justify fa-large" style="margin-left: -1800%"/>
                 </navbar-nav>
 
                 <navbar-nav right>
                     <dropdown tag="li" class="nav-item">
-                        <dropdown-toggle slot="toggle" tag="a" navLink waves-fixed><span style="color: #688696;"><i
-                                class="fas fa-user"/>&nbsp;&nbsp;Ermínio Jasse </span></dropdown-toggle>
-                            <!--<dropdown-menu>-->
-                            <!--<dropdown-item>Logout</dropdown-item>-->
-                            <!--<dropdown-item>Sair</dropdown-item>-->
-                            <!--</dropdown-menu>-->
+                        <dropdown-toggle slot="toggle" tag="a" navLink waves-fixed><span style="color: #688696;"
+                                                                                         @click="showModal"><i
+                                class="fas fa-user"/>&nbsp;&nbsp;{{ user_name }} </span>
+                        </dropdown-toggle>
                     </dropdown>
                 </navbar-nav>
-                    <!-- Search form -->
-                    <!--<form>-->
-                    <!--<md-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>-->
-                    <!--</form>-->
             </navbar-collapse>
         </navbar>
-        <!--/.Navbar-->
+
+        <!--Modal-->
+        <modal size="md" id="modalUser">
+            <modal-header>
+                <modal-title>Dados do Utilizador</modal-title>
+            </modal-header>
+            <modal-body>
+                <section>
+                    <div class="text-left">
+                        <h6 class="font-weight-bold" style="font-size: 10pt">Nome</h6>
+                        <h6 style="font-size: 10pt">{{ user_name }}</h6>
+                        <hr>
+                        <h6 class="font-weight-bold" style="font-size: 10pt">Email</h6>
+                        <h6 style="font-size: 10pt">{{ user_email }}</h6>
+                    </div>
+                </section>
+            </modal-body>
+            <modal-footer>
+                <btn outline="default" darkWaves id="btn-cancel" @click="modalActions" class="btn-sm">Cancelar</btn>
+                <btn id="btn-sair" class="btn-sm" color="danger" @click="logout">Sair do Sistema</btn>
+            </modal-footer>
+        </modal>
     </container>
 </template>
 
@@ -45,11 +50,17 @@
         NavbarNav,
         NavbarCollapse,
         Container,
+        Btn,
         Dropdown,
         DropdownItem,
         DropdownMenu,
         DropdownToggle,
-        mdbNavbarBrand
+        mdbNavbarBrand,
+        Modal,
+        ModalHeader,
+        ModalTitle,
+        ModalBody,
+        ModalFooter
     } from 'mdbvue';
 
     export default {
@@ -58,18 +69,41 @@
             Navbar,
             NavbarItem,
             NavbarNav,
+            Btn,
             NavbarCollapse,
             Container,
             Dropdown,
             DropdownItem,
             DropdownMenu,
             DropdownToggle,
-            mdbNavbarBrand
+            mdbNavbarBrand,
+            Modal,
+            ModalHeader,
+            ModalTitle,
+            ModalBody,
+            ModalFooter
+        },
+        data() {
+            return {
+                user_name: window.localStorage.getItem('user_name'),
+                user_email: window.localStorage.getItem('user_email')
+            }
+        },
+        methods: {
+            logout() {
+                $('#modalUser').modal('hide');
+                this.$router.push('/');
+            },
+            modalActions() {
+                $('#modalUser').modal('hide');
+            },
+            showModal() {
+                $('#modalUser').modal('show');
+            }
         }
-    };
+    }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
     #fixed-nav {
@@ -79,5 +113,9 @@
 
     #nav-container {
         z-index: 1;
+    }
+
+    #modalUser {
+        display: none;
     }
 </style>

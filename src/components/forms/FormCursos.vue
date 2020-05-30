@@ -4,7 +4,7 @@
 
         <div class="cards">
             <card v-for="c in cursos" color="info-color" class="text-center col-lg-3 card"
-                  @click.native="showModal16 = true">
+                  @click.native="showModal16 = true" :key="0">
                 <card-body>
                     <h4>{{ c.curso }}</h4>
                     <h6>{{ c.nivel }}º Ano</h6>
@@ -40,6 +40,7 @@
 <script>
     import {Card, CardBody, Btn, Modal, ModalHeader, ModalBody, ModalFooter, ModalTitle, MdTextarea} from 'mdbvue';
     import axios from "axios";
+    import {my_base_url} from "../../recycler/global";
 
     export default {
         name: "FormCursos",
@@ -54,13 +55,16 @@
             getCursos() {
                 let mes = new Date().getMonth().valueOf() + 1, semestre = '';
                 semestre = (mes <= 6) ? 1 : 2;
-                axios.get('http://127.0.0.1:8000/api/get_cursos?semestre=' + semestre + '&id_docente=' + 1)
+                axios.get(my_base_url + 'get_cursos?semestre=' + semestre + '&id_docente=' + 1)
                     .then(response => {
                         this.cursos = response.data.cursos;
                     });
             }
         },
         beforeMount() {
+            if (localStorage.getItem('user_id') === 'null') {
+                this.$router.push('/');
+            }
             this.getCursos();
         }
     }

@@ -1,0 +1,101 @@
+
+
+let section = document.getElementById('aulas');
+                    let div = document.createElement('div');
+                    div.setAttribute('id', 'lbl-adicionar');
+                    div.classList.add('lbl-add');
+                    div.innerText = 'Aula ' + self.nr_aula++;
+                    div.setAttribute('onselectstart', 'return false');
+                    div.style.backgroundColor = '#bfcfcc';
+                    div.style.cursor = 'pointer';
+                    div.style.marginRight = '.2%';
+                    div.style.fontSize = '10pt';
+                    div.style.padding = '.2%2%0%2%';
+                    div.addEventListener('click', function () {
+                        this.style.backgroundColor = '#2bbbad';
+                        this.style.color = '#ffffff';
+
+                        //Yanking the id of the recently added Aula
+                        axios.get('http://127.0.0.1:8000/api/get_id_aula?id_nivel=' + id_nivel + '&id_disciplina=' + id_disciplina + '&id_curso=' + id_curso)
+                            .then(response => {
+                                self.id_aula = response.data.id_aula[0].id_aula;
+                                localStorage.setItem('id_aula', response.data.id_aula[0].id_aula);
+                            });
+                    });
+                    let input = document.createElement('input');
+                    input.setAttribute('type', 'hidden');
+                    input.value = self.id_aula;
+                    div.appendChild(input);
+
+                    section.insertBefore(div, section.childNodes[0]);
+
+
+// "rgba(255, 99, 132, 0.2)",
+// "rgba(54, 162, 235, 0.2)",
+
+
+<< FormTurma >>
+
+<div class="list-turmas col-lg-5">
+                <div style="border: #f749a8 solid 1px;padding: .2%0%.2%0%;font-weight: bold;" class="col-lg-12">Datas
+                    Registadas
+                </div>
+                <br>
+
+                <tbl>
+                    <tbl-body>
+                        <tr scope="row" class="linha" v-for="d in datas_da_turma">
+                            <td><span>{{ d.data.split('-')[2] + ' / ' + d.data.split('-')[1] + ' / ' + d.data.split('-')[0] }}</span>
+                            </td>
+                            <td><span>{{ d.descricao }}</span></td>
+                        </tr>
+                    </tbl-body>
+                </tbl>
+            </div>
+
+            <<ProgressBar>>
+            /*background-image: linear-gradient(135deg, rgba($color: #fff, $alpha: .15) 25%, transparent 25%,*/
+                    /*        transparent 50%, rgba($color: #fff, $alpha: .15) 50%,*/
+                    /*        rgba($color: #fff, $alpha: .15) 75%, transparent 75%,*/
+                    /*        transparent);*/
+
+
+            <<Estatisticas BarChart in mounted method>>
+         this.loaded = false;
+                     await axios.get('http://127.0.0.1:8000/api/get_turmas_estatisticas?id_docente=' + this.id_docente)
+                         .then(response => {
+                             this.loaded = true;
+                             this.chartdata = {
+                                 labels: ['II 2020 Lab', 'II 2020 PL'],
+                                 datasets: [{
+                                     label: "Número de Faltas",
+                                     data: [response.data.turmas_estatisticas[0].faltas, response.data.turmas_estatisticas[1].faltas],
+                                     backgroundColor: [
+                                         "rgb(247,73,168)",
+                                         "rgb(70,191,189)",
+                                     ],
+                                     borderColor: [
+                                         "rgb(247,73,168)",
+                                         "rgb(70,191,189)",
+                                     ],
+                                     borderWidth: 1
+                                 }]
+                             };
+
+                             this.options = {
+                                 scales: {
+                                     yAxes: [{
+                                         ticks: {
+                                             beginAtZero: true
+                                         }
+                                     }]
+                                 },
+                                 maintainAspectRatio: false,
+                                 title: {
+                                     display: true,
+                                     text: " FALTAS COMETIDAS EM CADA TURMA"
+                                 }
+                             }
+                         }).catch(function (error) {
+
+                         });

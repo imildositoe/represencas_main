@@ -10,44 +10,38 @@
 
             <ul id="menu" class="list-unstyled components">
                 <li class="active" id="inicio">
-                    <router-link to="/">
-                        <i class="fas fa-home"></i>
+                    <router-link to="/home">
+                        <i class="fas fa-home"/>
                         Início
                     </router-link>
                 </li>
-<!--                <li id="cursos">-->
-<!--                    <router-link to="/cursos">-->
-<!--                        <i class="fas fa-briefcase"></i>-->
-<!--                        Cursos-->
-<!--                    </router-link>-->
-<!--                </li>-->
                 <li id="turmas">
                     <router-link to="/turmas">
-                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-pencil-ruler"/>
                         Turmas
                     </router-link>
                 </li>
                 <li id="estudantes">
                     <router-link to="/estudantes">
-                        <i class="fas fa-user-ninja"></i>
+                        <i class="fas fa-user-ninja"/>
                         Estudantes
                     </router-link>
                 </li>
                 <li id="marcacao">
                     <router-link to="/marcacao" class="link">
-                        <i class="fas fa-fingerprint"></i>
+                        <i class="fas fa-fingerprint"/>
                         Marcação
                     </router-link>
                 </li>
                 <li id="estatisticas">
                     <router-link to="/estatisticas" class="link">
-                        <i class="fas fa-chart-pie"></i>
+                        <i class="fas fa-chart-pie"/>
                         Estatísticas
                     </router-link>
                 </li>
                 <li id="arquivo">
                     <router-link to="/arquivo" class="link">
-                        <i class="fas fa-file-archive"></i>
+                        <i class="fas fa-file-archive"/>
                         Arquivo
                     </router-link>
                 </li>
@@ -59,10 +53,9 @@
 
 <script>
     export default {
-        name: "SideBar", $,
+        name: "SideBar",
         beforeMount() {
             $(document).ready(function () {
-
                 $('#menu li').on('click', function () {
                     let a = $('#menu li');
                     for (let i = 0; i < a.length; i++) {

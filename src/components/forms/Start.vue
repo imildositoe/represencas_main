@@ -48,6 +48,7 @@
 <script>
     import {Card, CardTitle, CardText, CardFooter, CardBody, CardHeader, CardGroup, Row} from 'mdbvue';
     import axios from 'axios'
+    import {my_base_url} from "../../recycler/global";
 
     export default {
         name: "Start",
@@ -66,40 +67,46 @@
                 cursosSegSemestre: 0,
                 turmasPrimSemestre: 0,
                 turmasSegSemestre: 0,
-                year: new Date().getUTCFullYear()
+                year: new Date().getUTCFullYear(),
+                id_docente: localStorage.getItem('user_id')
             }
         },
         methods: {
             getCountCursosPrimSem() {
-                axios.get('http://127.0.0.1:8000/api/get_count_cursos?semestre=1&id_docente=' + 1)
+                axios.get(my_base_url + 'get_count_cursos?semestre=1&id_docente=' + this.id_docente)
                     .then(response => {
                         this.cursosPrimSemestre = response.data.cursos[0].cursos;
                     });
             },
             getCountCursosSegSem() {
-                axios.get('http://127.0.0.1:8000/api/get_count_cursos?semestre=2&id_docente=' + 1)
+                axios.get(my_base_url + 'get_count_cursos?semestre=2&id_docente=' + this.id_docente)
                     .then(response => {
                         this.cursosSegSemestre = response.data.cursos[0].cursos;
                     });
             },
             getCountTurmasPrimSem() {
-                axios.get('http://127.0.0.1:8000/api/get_count_turmas?semestre=1&id_docente=' + 1)
+                axios.get(my_base_url + 'get_count_turmas?semestre=1&id_docente=' + this.id_docente)
                     .then(response => {
                         this.turmasPrimSemestre = response.data.turmas[0].turmas;
                     });
             },
             getCountTurmasSegSem() {
-                axios.get('http://127.0.0.1:8000/api/get_count_turmas?semestre=2&id_docente=' + 1)
+                axios.get(my_base_url + 'get_count_turmas?semestre=2&id_docente=' + this.id_docente)
                     .then(response => {
                         this.turmasSegSemestre = response.data.turmas[0].turmas;
                     });
             }
         },
         beforeMount() {
+            if (localStorage.getItem('user_id') === 'null') {
+                this.$router.push('/');
+            }
             this.getCountTurmasPrimSem();
             this.getCountTurmasSegSem();
             this.getCountCursosPrimSem();
             this.getCountCursosSegSem();
+
+            const openRoutes = ['/home', '/cursos', '/turmas', '/estudantes', '/marcacao', '/estatisticas', '/arquivo'];
         }
     }
 </script>
