@@ -297,10 +297,10 @@
             // Grouped Bar Chart
             series: [{
                 name: 'Teorica',
-                data: [58, 10, 4]
+                data: [16, 6, 0]
             }, {
                 name: 'Pratica',
-                data: [15, 38, 27]
+                data: [42, 2, 0]
             }],
             chartOptions: {
                 chart: {
