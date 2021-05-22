@@ -15,6 +15,7 @@ import './assets/mdb/css/bootstrap.css';
 import './assets/mdb/css/mdb.css';
 import './assets/mdb/js/bootstrap'
 import './assets/mdb/js/mdb'
+import $ from 'jquery'
 // import './assets/mdb/css/materialize.css'
 // import './assets/mdb/js/materialize'
 

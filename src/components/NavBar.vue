@@ -1,13 +1,9 @@
 <template>
     <container id="nav-container">
         <!--Navbar-->
-        <navbar id="fixed-nav" position="top" dark style="background-color: #ffffff;margin-left: 18.5%"
+        <navbar id="fixed-nav" position="top" dark style="background-color: #ffffff;margin-left: 17.2%"
                 class="col-lg-10" scrolling>
             <navbar-collapse>
-                <navbar-nav>
-                    <i class="fa fa-align-justify fa-large" style="margin-left: -1800%"/>
-                </navbar-nav>
-
                 <navbar-nav right>
                     <dropdown tag="li" class="nav-item">
                         <dropdown-toggle slot="toggle" tag="a" navLink waves-fixed><span style="color: #688696;"

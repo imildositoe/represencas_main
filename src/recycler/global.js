@@ -1,3 +1,3 @@
 module.exports = {
-    my_base_url: 'http://127.0.0.1:8000/api/'
+    my_base_url: 'https://represencas-api.herokuapp.com/api/'
 }
