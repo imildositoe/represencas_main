@@ -116,32 +116,32 @@
             </div>
         </div>
 
-        <hr>
-
-        <div class="visao-aulas">
-            <h6 class="label text-left font-weight-bold deep-blue-gradient">Aulas</h6>
-            <div style="display: flex">
-                <div class="col-lg-7" id="chart">
-                    <apex-chart type="bar" height="430" :options="chartOptions" :series="series"/>
-                </div>
-                <div class="col-lg-4" style="margin: 6.5%005%">
-                    <h5 style="font-size: medium" class="text-left">
-                        <tbl>
-                            <thead>
-                            <th><span class="font-weight-bold">Turma</span></th>
-                            <th><span class="font-weight-bold">Teorica</span></th>
-                            <th><span class="font-weight-bold">Pratica</span></th>
-                            </thead>
-                            <tr v-for="item in view_bar_array">
-                                <td><span class="text-left">{{ item.label }}</span></td>
-                                <td><span class="text-left">{{ item.nr_faltas }} Faltas</span></td>
-                                <td><span class="text-left">{{ item.nr_faltas }} Faltas</span></td>
-                            </tr>
-                        </tbl>
-                    </h5>
-                </div>
-            </div>
-        </div>
+<!--        <hr>-->
+<!---->
+<!--        <div class="visao-aulas">-->
+<!--            <h6 class="label text-left font-weight-bold deep-blue-gradient">Aulas</h6>-->
+<!--            <div style="display: flex">-->
+<!--                <div class="col-lg-7" id="chart">-->
+<!--                    <apex-chart type="bar" height="430" :options="chartOptions" :series="series"/>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4" style="margin: 6.5%005%">-->
+<!--                    <h5 style="font-size: medium" class="text-left">-->
+<!--                        <tbl>-->
+<!--                            <thead>-->
+<!--                            <th><span class="font-weight-bold">Turma</span></th>-->
+<!--                            <th><span class="font-weight-bold">Teorica</span></th>-->
+<!--                            <th><span class="font-weight-bold">Pratica</span></th>-->
+<!--                            </thead>-->
+<!--                            <tr v-for="item in view_bar_array">-->
+<!--                                <td><span class="text-left">{{ item.label }}</span></td>-->
+<!--                                <td><span class="text-left">{{ item.nr_faltas }} Faltas</span></td>-->
+<!--                                <td><span class="text-left">{{ item.nr_faltas }} Faltas</span></td>-->
+<!--                            </tr>-->
+<!--                        </tbl>-->
+<!--                    </h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <hr>
 
